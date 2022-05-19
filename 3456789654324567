@@ -1,0 +1,2323 @@
+local library = loadstring(game:HttpGet(('https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/wall%20v3')))()
+
+-- X = Right
+-- W = Left
+
+local w = library:CreateWindow("Visual Faces") 
+local x = library:CreateWindow("Visual Hats") 
+local y = library:CreateWindow("Visual Parts") 
+local z = library:CreateWindow("Info") 
+
+--=================================--
+
+local e = w:CreateFolder("Main Faces") 
+local f = w:CreateFolder("BubbleTrouble") 
+local g = w:CreateFolder("BeastMode") 
+local h = w:CreateFolder("Extras") 
+
+--=================================--
+
+local a = x:CreateFolder("Valkyrie") 
+local b = x:CreateFolder("Fire Horns") 
+local c = x:CreateFolder("Dominus") 
+local d = x:CreateFolder("SparkleFedora") 
+
+--=================================--
+
+local i = z:CreateFolder("Credits") 
+local j = z:CreateFolder("Discord") 
+local k = z:CreateFolder("Roblox") 
+local l = z:CreateFolder("Request Item") 
+
+--=================================--
+
+local m = y:CreateFolder("Korblox") 
+local o = y:CreateFolder("Headless") 
+
+-------------------------------------------------------------------------
+
+m:Button("R Korblox",function()
+
+local ply = game.Players.LocalPlayer
+local chr = ply.Character
+chr.RightLowerLeg.MeshId = "902942093"
+chr.RightLowerLeg.Transparency = "1"
+chr.RightUpperLeg.MeshId = "http://www.roblox.com/asset/?id=902942096"
+chr.RightUpperLeg.TextureID = "http://roblox.com/asset/?id=902843398"
+chr.RightFoot.MeshId = "902942089"
+chr.RightFoot.Transparency = "1"
+
+end)
+
+m:Button("L Korblox",function()
+
+local ply = game.Players.LocalPlayer
+local chr = ply.Character
+chr.LeftLowerLeg.MeshId = "101851582"
+chr.LeftLowerLeg.Transparency = "1"
+chr.LeftUpperLeg.MeshId = "http://www.roblox.com/asset/?id=101851582"
+chr.LeftUpperLeg.TextureID = "http://roblox.com/asset/?id=101851582"
+chr.LeftFoot.MeshId = "101851582"
+chr.LeftFoot.Transparency = "1"
+
+end)
+
+o:Button("Headless",function()
+getgenv().game.Players.LocalPlayer.Character.Head.Transparency = 1
+getgenv().game.Players.LocalPlayer.Character.Head.face:Destroy()
+getgenv().game.Players.LocalPlayer.Character.Head.face:Destroy()
+end)
+
+l:Button("Request",function()
+
+local CoreGui = game:GetService("StarterGui") 
+
+CoreGui:SetCore("SendNotification", {
+
+    Title = "Want an item to be added?",
+    Text = "DM nyc.xz#0001 an item link, if the username doesnt work then join .gg/booga and dm @nyc.xz",
+    Duration = 15, 
+
+	})
+
+end)
+
+i:Button("Creator",function()
+
+local CoreGui = game:GetService("StarterGui") 
+
+CoreGui:SetCore("SendNotification", {
+
+    Title = "Creator",
+    Text = "nyc.xz#0001 / aura#9265",
+    Duration = 10, 
+
+	})
+
+end)
+
+j:Button("Discord Server",function()
+
+
+local CoreGui = game:GetService("StarterGui") 
+CoreGui:SetCore("SendNotification", {
+
+    Title = "Copied to your clipboard",
+    Text = "Paste link in your browser",
+    Duration = 10, 
+})
+
+wait(1)
+
+setclipboard("discord.gg/booga")
+
+end)
+
+k:Button("Roblox Group",function()
+
+
+local CoreGui = game:GetService("StarterGui") 
+CoreGui:SetCore("SendNotification", {
+
+    Title = "Copied to your clipboard",
+    Text = "Paste link in your browser",
+    Duration = 10, 
+})
+
+wait(1)
+
+setclipboard("https://www.roblox.com/groups/11930041/Decisions#!/about")
+
+end)
+
+a:Button("BlackValk",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Blackvalk
+    
+    local accessoryId = 124730194
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+a:Button("EmeraldValk",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Emerald Valkyrie
+    
+    local accessoryId = 2830437685
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+a:Button("SparkleTimeValk",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Sparkle Time Valkyrie
+    
+    local accessoryId = 1180433861
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+a:Button("VioletValk",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Violet Valkyrie
+    
+    local accessoryId = 1402432199
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+a:Button("ValiantValkTesting",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Valiant Valkyrie of Testing
+    
+    local accessoryId = 7781687598
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+a:Button("ValkHelm",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Valkyrie Helm
+    
+    local accessoryId = 1365767
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+a:Button("IceValk",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Ice Valkyrie
+    
+    local accessoryId = 4390891467
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+------------------------------------------------------------------------------------
+
+b:Button("NetherworldHorn",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Fiery Horns of the Netherworld
+    
+    local accessoryId = 215718515
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+b:Button("FrozenHorn",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Frozen Horns of the Frigid Planes
+    
+    local accessoryId = 74891470
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+b:Button("PoisonedHorn",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Poisoned Horns of the Toxic Wasteland
+    
+    local accessoryId = 1744060292
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+
+------------------------------------------------------------------------------------
+
+
+c:Button("DominusVespertilio",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Vespertilio
+    
+    local accessoryId = 96103379
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusRex",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Rex
+    
+    local accessoryId = 250395631
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusPraefectus",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Praefectus
+    
+    local accessoryId = 527365852
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusMessor",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Messor
+    
+    local accessoryId = 64444871
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusInfernus",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Infernus
+    
+    local accessoryId = 31101391
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusFrigidus",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Frigidus
+    
+    local accessoryId = 48545806
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+
+c:Button("DominusFormidulosus",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Formidulosus
+    
+    local accessoryId = 4255053867
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusEmpyreus",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Empyreus
+     
+    local accessoryId = 21070012
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusAureus",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Aureus
+    
+    local accessoryId = 138932314
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+c:Button("DominusAstra",function()
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+    -- Dominus Astra
+    
+    local accessoryId = 162067148
+    local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+    addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+end)
+
+------------------------------------------------------------------------------------
+
+
+d:Button("BlueSparkle",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Sky-Blue-Sparkle-Time-Fedora
+
+local accessoryId = 493476042                                                                                                                                             
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("SparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Sparkle-Time-Fedora
+
+local accessoryId = 1285307                                                                                                                                                                                                                                                                                             
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("TealSparkle",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Teal-Sparkle-Time-Fedora
+
+local accessoryId = 147180077                                                                                                                                                                                                                                          
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("GreenSparkle",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Green-Sparkle-Time-Fedora
+
+local accessoryId = 100929604                                                                                                      
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("MidnightBlueSparkle",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Midnight-Blue-Sparkle-Time-Fedora
+
+local accessoryId = 119916949                         
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("RedSparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Red-Sparkle-Time-Fedora
+
+local accessoryId = 72082328            
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("PurpleSparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Purple-Sparkle-Time-Fedora
+
+local accessoryId = 63043890                                            
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("BlackSparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Black-Sparkle-Time-Fedora
+
+local accessoryId = 259423244                                                                                                                                                                 
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("WhiteSparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- White-Sparkle-Time-Fedora
+
+local accessoryId = 1016143686                                                                                                                                                                                                                                                                                                                                               
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("PinkSparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Pink-Sparkle-Time-Fedora
+
+local accessoryId = 334663683                                                                     
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("OrangeSparkleTime",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+-- Orange-Sparkle-Time-Fedora
+
+local accessoryId = 215751161                                                                                                                                                                                                   
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+d:Button("Bluesteel",function()
+
+    function weldAttachments(attach1, attach2)
+        local weld = Instance.new("Weld")
+        weld.Part0 = attach1.Parent
+        weld.Part1 = attach2.Parent
+        weld.C0 = attach1.CFrame
+        weld.C1 = attach2.CFrame
+        weld.Parent = attach1.Parent
+        return weld
+    end
+     
+    local function buildWeld(weldName, parent, part0, part1, c0, c1)
+        local weld = Instance.new("Weld")
+        weld.Name = weldName
+        weld.Part0 = part0
+        weld.Part1 = part1
+        weld.C0 = c0
+        weld.C1 = c1
+        weld.Parent = parent
+        return weld
+    end
+     
+    local function findFirstMatchingAttachment(model, name)
+        for _, child in pairs(model:GetChildren()) do
+            if child:IsA("Attachment") and child.Name == name then
+                return child
+            elseif not child:IsA("Accoutrement") and not child:IsA("Tool") then -- Don't look in hats or tools in the character
+                local foundAttachment = findFirstMatchingAttachment(child, name)
+                if foundAttachment then
+                    return foundAttachment
+                end
+            end
+        end
+    end
+     
+    function addAccoutrement(character, accoutrement)  
+        accoutrement.Parent = character
+        local handle = accoutrement:FindFirstChild("Handle")
+        if handle then
+            local accoutrementAttachment = handle:FindFirstChildOfClass("Attachment")
+            if accoutrementAttachment then
+                local characterAttachment = findFirstMatchingAttachment(character, accoutrementAttachment.Name)
+                if characterAttachment then
+                    weldAttachments(characterAttachment, accoutrementAttachment)
+                end
+            else
+                local head = character:FindFirstChild("Head")
+                if head then
+                    local attachmentCFrame = CFrame.new(0, 0.5, 0)
+                    local hatCFrame = accoutrement.AttachmentPoint
+                    buildWeld("HeadWeld", head, head, handle, attachmentCFrame, hatCFrame)
+                end
+            end
+        end
+    end
+
+-- Bluesteel-Fedora
+
+local accessoryId = 98346834                                                                                                                                                                                                                                                                                                                                                                   
+local accessory = game:GetObjects("rbxassetid://" .. tostring(accessoryId))[1]
+addAccoutrement(game.Players.LocalPlayer.Character, accessory)
+
+end)
+
+
+--------------------------------------------------------------------------------
+
+g:Button("Red",function()
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://127959433"
+
+end)
+
+g:Button("Blue",function()
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://209712379"
+
+end)
+
+g:Button("Green",function()
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://2225757922"
+
+end)
+
+g:Button("Purple",function()
+
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://2606174048"
+
+end)
+
+e:Button("Prankster",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://20052028"
+end)
+
+e:Button("Playful Vampire",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://2409281591"
+end)
+
+e:Button("SuperHappyFace",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://494290547"
+end)
+
+e:Button("TroubleMaker",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://22920500"
+end)
+
+e:Button("Tattletale",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://26343132"
+end)
+
+f:Button("Purple",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://362047189"
+end)
+
+f:Button("Green",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://380753459"
+end)
+
+f:Button("Pink",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://19264782"
+end)
+
+f:Button("Blue",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://330393309"
+end)
+
+h:Button("RedGlowingEyes",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://179693472"
+end)
+
+h:Button("Yum!",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://26018945"
+end)
+
+h:Button("ROBLOXMadnessFace",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://129900258"
+end)
+
+h:Button("SilverPunkFace",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://387256104"
+end)
+
+h:Button("Punk Face",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://119768621"
+end)
+
+h:Button("YellowGlowingEyes",function()
+    local LocalPlayer = game:GetService("Players").LocalPlayer
+    local Character = LocalPlayer.Character
+    local Head = Character:FindFirstChild("Head")
+    local Decal = Head:FindFirstChild("face") or Head:FindFirstChild("Face")
+    Decal.Texture = "rbxassetid://416830979"
+end)
+
+local CoreGui = game:GetService("StarterGui") 
+
+CoreGui:SetCore("SendNotification", {
+
+    Title = "IMPORTANT",
+    Text = "Read Info for Info obviously / THIS SCRIPT IS FREE, IF YOU BOUGHT IT YOU GOT SCAMMED.",
+    Duration = 15, 
+
+})
